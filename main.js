@@ -262,14 +262,14 @@ function update()
 
 			var otherDeviceCheck = $("#other-device-check").val();
 
-   			if (otherDeviceCheck === "yes")
+   			if (otherDeviceCheck === "no")
    			{
    				$("#solutions").show();
    				$(".internet-solutions-restart-internal").show();
    				$(".solutions-restart-major").show();
 
    			}
-   			else if (otherDeviceCheck === "no")
+   			else if (otherDeviceCheck === "yes")
    			{
 				$("#internet-router-check").show();
 				var routerCheck = $("#router-check").val();
