@@ -35,10 +35,9 @@ For a school project (Digital Media VET)
 							<option value="printer">Printer</option>
 						</select> <br /> <br />
 
-						<div id="pc" class="hidden">
-
+						<div class="pc-type hidden">
 							<label>What operating system do you use?</label> <br />
-							<select id="os" name="os" class="required" >
+							<select id="pc-os" name="pc-os" class="required" >
 								<option value="" selected disabled>Choose</option>
 								<option value="windows">Windows</option>
 								<option value="mac">Mac</option>
@@ -46,42 +45,103 @@ For a school project (Digital Media VET)
 								<option value="other">Other</option>
 							</select> <br /> <br />
 
-							<div id="os-other" class="hidden">
+							<div class="pc-os-other hidden">
 
 								<label>Enter the operating system name</label> <br />
-								<input type="text" name="os-other" class="required" /> <br /> <br />
+								<input type="text" name="pc-os-other" class="required" /> <br /> <br />
 
 							</div>
-
-							<label>What type of problem are you having?</label> <br />
-							<select id="issue" name="issue" class="required" >
+						</div>
+						<div class="phone-type hidden">
+							<label>What type of phone do you have?</label> <br />
+							<select id="phone-os" name="phone-os" class="required" >
 								<option value="" selected disabled>Choose</option>
-								<option value="startup">Startup</option>
-								<option value="internet">Internet</option>
-								<option value="peripherals">Peripherals (Keyboard, Mouse, etc)</option>
-								<option value="crash">Freeze/Crash</option>
-								<option value="speed">Speed</option>
-								<option value="graphics">Graphics</option>
-								<option value="couruption">Couruption</option>
+								<option value="ios">iOS (Apple)</option>
+								<option value="android">Android</option>
+								<option value="windows">Windows Phone</option>
 								<option value="other">Other</option>
 							</select> <br /> <br />
 
-							<div id="issue-other" class="hidden">
+							<div class="phone-os-other hidden">
 
-								<label>Briefly describe your issue</label> <br />
-								<input type="text" name="issue-other" class="required" /> <br /> <br />
+								<label>Enter your phone's model name</label> <br />
+								<input type="text" name="phone-os-other" class="required" /> <br /> <br />
 
 							</div>
+						</div>
+						<div class="printer-type hidden">
+							<label>What brand of printer are you using?</label> <br />
+							<select id="printer-brand" name="printer-brand" class="required" >
+								<option value="" selected disabled>Choose</option>
+								<option value="brother">Brother</option>
+								<option value="hp">HP</option>
+								<option value="canon">Canon</option>
+								<option value="epson">Epson</option>
+								<option value="other">Other</option>
+							</select> <br /> <br />
 
-							<label>What relevant software/hardware are you are using?</label> <br />
-							<input type="text" name="issue-relevant" class="required" /> <br /> <br />
+							<div class="printer-brand-other hidden">
 
+								<label>Enter the name of your printer</label> <br />
+								<input type="text" name="printer-brand-other" class="required" /> <br /> <br />
+
+							</div>
 						</div>
 
-						<div id="phone">
+						<div class="issue-types hidden">
+							<label>What type of problem are you having?</label> <br />
+							<div class="issue-types-pc hidden">
+								<select id="pc-issue" name="pc-issue" class="required" >
+									<option value="" selected disabled>Choose</option>
+									<option value="startup">Startup</option>
+									<option value="internet">Internet</option>
+									<option value="crash">Freeze/Crash</option>
+									<option value="speed">Speed</option>
+									<option value="graphics">Graphics</option>
+									<option value="couruption">Couruption</option>
+									<option value="battery">Battery</option>
+									<option value="peripherals">Peripherals (Keyboard, Mouse, etc)</option>
+									<option value="touchscreen">Touchscreen</option>
+									<option value="camera">Camera</option>
+									<option value="other">Other</option>
+								</select>
+							</div>
+							<div class="issue-types-phone hidden">
+								<select id="phone-issue" name="phone-issue" class="required" >
+									<option value="" selected disabled>Choose</option>
+									<option value="startup">Startup</option>
+									<option value="internet">Internet</option>
+									<option value="crash">Freeze/Crash</option>
+									<option value="speed">Speed</option>
+									<option value="graphics">Graphics</option>
+									<option value="battery">Battery</option>
+									<option value="touchscreen">Touchscreen</option>
+									<option value="couruption">Couruption</option>
+									<option value="camera">Camera</option>
+									<option value="other">Other</option>
+								</select>
+							</div>
+							<div class="issue-types-printer hidden">
+								<select id="printer-issue" name="printer-issue" class="required" >
+									<option value="" selected disabled>Choose</option>
+									<option value="printing">Printing</option>
+									<option value="scanning">Scanning</option>
+									<option value="startup">Startup</option>
+									<option value="internet">Internet</option>
+									<option value="crash">Freeze/Crash</option>
+									<option value="speed">Speed</option>
+									<option value="touchscreen">Touchscreen</option>
+									<option value="other">Other</option>
+								</select>
+							</div>
+							<br />
 						</div>
 
-						<div id="printer">
+						<div id="issue-other" class="hidden">
+
+							<label>Briefly describe your issue</label> <br />
+							<input type="text" name="issue-other" class="required" /> <br /> <br />
+
 						</div>
 					</fieldset>
 				</div>
@@ -90,14 +150,25 @@ For a school project (Digital Media VET)
 						<legend>Internet</legend>
 
 						<label>How do you access the internet?</label> <br />
-						<select id="internet-method" name="internet-method" class="required" >
-							<option value="" selected disabled>Choose</option>
-							<option value="ethernet">Ethernet</option>
-							<option value="wifi">WiFi</option>
-							<option value="other">Other</option>
-						</select> <br /> <br />
+						<div class="internet-methods-generic hidden">
+							<select id="generic-internet-method" name="generic-internet-method" class="required" >
+								<option value="" selected disabled>Choose</option>
+								<option value="ethernet">Ethernet</option>
+								<option value="wifi">WiFi</option>
+								<option value="other">Other</option>
+							</select> 
+						</div>
+						<div class="internet-methods-phone hidden">
+							<select id="phone-internet-method" name="phone-internet-method" class="required" >
+								<option value="" selected disabled>Choose</option>
+								<option value="celluar">Celluar</option>
+								<option value="wifi">WiFi</option>
+								<option value="other">Other</option>
+							</select>
+						</div>
+						<br />
 
-						<div id="internet-method-other" class="hidden">
+						<div class="internet-method-other hidden">
 
 							<label>Briefly describe your way of accessing the internet</label> <br />
 							<input type="text" name="internet-method-other" class="required" /> <br /> <br />
@@ -105,15 +176,27 @@ For a school project (Digital Media VET)
 						</div>
 
 						<label>Which of these best describes your issue?</label> <br />
-						<select id="internet-issue-specific" name="internet-issue-specific" class="required" >
-							<option value="" selected disabled>Choose</option>
-							<option value="no-internet">No Connection</option>
-							<option value="slow">Slow Internet</option>
-							<option value="partial">Only some websites load</option>
-							<option value="other">Other</option>
-						</select> <br /> <br />
+						<div class="internet-issues-generic hidden">
+							<select id="internet-issue-specific-generic" name="internet-issue-specific-generic" class="required" >
+								<option value="" selected disabled>Choose</option>
+								<option value="no-internet">No Connection</option>
+								<option value="slow">Slow Internet</option>
+								<option value="partial">Only some websites load</option>
+								<option value="other">Other</option>
+							</select> 
+						</div>
 
-						<div id="internet-issue-specific-other-reveal" class="hidden">
+						<div class="internet-issues-printer hidden">
+							<select id="internet-issue-specific-printer" name="internet-issue-specific-printer" class="required" >
+								<option value="" selected disabled>Choose</option>
+								<option value="no-internet">No Connection</option>
+								<option value="wireless-printing">Cannot print wirelessly</option>
+								<option value="other">Other</option>
+							</select> 
+						</div>
+						<br />
+
+						<div class="internet-issue-specific-other hidden">
 
 							<label>Briefly describe the problem you are having</label> <br />
 							<input type="text" name="internet-issue-specific-other" class="required" /> <br /> <br />
@@ -143,7 +226,7 @@ For a school project (Digital Media VET)
 
 							<div id="partial-internet-incognito-test" class="hidden">
 
-								<label>Can you access the site using incognito mode or a different browser?</label>
+								<label>Can you access the site using incognito mode or a different browser?</label><br />
 								<select id="incognito-test" name="incognito-test" class="required" >
 									<option value="" selected disabled>Choose</option>
 									<option value="yes">Yes</option>
