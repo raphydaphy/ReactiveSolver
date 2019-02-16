@@ -181,6 +181,15 @@ For a school project (Digital Media VET)
 
 						</div>
 
+						<div id="internet-other-device-check" class="hidden">
+							<label>Can you access the internet on a different device using the same network?</label><br />
+							<select id="other-device-check" name="other-device-check" class="required" >
+								<option value="" selected disabled>Choose</option>
+								<option value="yes">Yes</option>
+								<option value="no">No</option>
+							</select><br /><br />
+						</div>
+
 						<div id="internet-router-check" class="hidden">
 							<label>Do you have access to your router?</label><br />
 							<select id="router-check" name="router-check" class="required" >
@@ -201,13 +210,13 @@ For a school project (Digital Media VET)
 						<div class="partial-internet-other-site-solution hidden">
 
 							<input type="checkbox" name="potential-solutions" value="partial-internet-other-site" id="partial-internet-other-site">
-							<label>View a different website - the one you are trying to access is currently unavalable</label>
+							<label>View a different website - the one you are trying to access is currently unavalable<br /></label>
 						</div>
 
 						<div class="partial-internet-cache-solution hidden">
 
 							<input type="checkbox" name="potential-solutions" value="partial-internet-cache" id="partial-internet-cache">
-							<label>Follow the instructions to <a href="https://www.refreshyourcache.com/en/home/" target="_blank">refresh your cache</a> and try to visit the site again</label>
+							<label>Follow the instructions to <a href="https://www.refreshyourcache.com/en/home/" target="_blank">refresh your cache</a> and try to visit the site again<br /></label>
 						</div>
 					
 						<div class="internet-speed-solutions hidden">
@@ -222,16 +231,30 @@ For a school project (Digital Media VET)
 							<input type="checkbox" name="potential-solutions" value="internet-speed-restart-internal" id="internet-speed-restart-internal">
 							<label>Restart the network setting on your device <br /></label>
 						</div>
+
+						<div class="solutions-restart-major hidden">
+
+							<input type="checkbox" name="potential-solutions" value="solutions-restart-major" id="solutions-restart-major">
+							<label>Restart your device<br /></label>
+
+						</div>
+
 						<div class="internet-solutions-restart-router hidden">
 							<input type="checkbox" name="potential-solutions" value="internet-speed-restart-router" id="internet-speed-restart-router">
 							<label>Restart your router<br /></label>
 
 						</div>
 
+						<div class="internet-solutions-request-restart hidden">
+							<input type="checkbox" name="potential-solutions" value="internet-speed-request-restart" id="internet-speed-request-restart">
+							<label>Contact your network administrator and inform them of the issue<br /></label>
+
+						</div>
+
 						<div class="internet-solutions-new-ethernet hidden">
 
 							<input type="checkbox" name="potential-solutions" value="internet-connection-new-ethernet" id="internet-connection-new-ethernet">
-							<label>Replace your ethernet cable</label>
+							<label>Replace your ethernet cable<br /></label>
 						</div>
 
 						<div class="internet-speed-solutions hidden">

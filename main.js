@@ -104,15 +104,33 @@ function update()
 	   					$(".internet-solutions-new-ethernet").show();
 	   				}
 
-					$("#internet-router-check").show();
-					var routerCheck = $("#router-check").val();
+	   				$("#internet-other-device-check").show();
 
-					if (routerCheck === "yes")
-					{
-						$("#solutions").show();
-						$(".internet-solutions-restart-router").show();
+	   				var otherDeviceCheck = $("#other-device-check").val();
+
+	   				if (otherDeviceCheck === "yes")
+	   				{
+	   					$("#solutions").show();
+	   					$(".internet-solutions-restart-internal").show();
+	   					$(".solutions-restart-major").show();
+
+	   				}
+	   				else if (otherDeviceCheck === "no")
+	   				{
+						$("#internet-router-check").show();
+						var routerCheck = $("#router-check").val();
+
+						if (routerCheck === "yes")
+						{
+							$("#solutions").show();
+							$(".internet-solutions-restart-router").show();
+						}
+						else if (routerCheck === "no")
+						{
+							$("#solutions").show();
+							$(".internet-solutions-request-restart").show();
+						}
 					}
-
 	   			}
 	   			else if (hotspotTest === "no")
 	   			{
