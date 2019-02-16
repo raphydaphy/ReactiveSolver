@@ -1,0 +1,247 @@
+<!--
+Repair - IT Self Diagnosis tool
+Designed and programmed by Raph Hennessy
+For a school project (Digital Media VET)
+-->
+
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Reactive Maintance Solver</title>
+		<link href="https://fonts.googleapis.com/css?family=Patrick+Hand" rel="stylesheet"> 
+		<link rel="stylesheet" type="text/css" href="main.css">
+		<script src="jquery.min.js"></script>
+		<script src="main.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<h1>Reactive Maintance Solver</h1>
+			<p>Easy self diagnosis for various technology</p>
+
+			<form name="repair" method="post">
+				<div id="basic-info">
+					<fieldset>
+						<legend>Basic Information</legend>
+
+						<label>Who is having the issue?</label> <br />
+						<input type="text" name="name" class="required" /> <br /> <br />
+
+						<label>What device is malfunctioning?</label> <br />
+						<select id="device" name="device" class="required" >
+							<option value="" selected disabled>Choose</option>
+							<option value="pc">PC</option>
+							<option value="phone">Phone</option>
+							<option value="printer">Printer</option>
+						</select> <br /> <br />
+
+						<div id="pc" class="hidden">
+
+							<label>What operating system do you use?</label> <br />
+							<select id="os" name="os" class="required" >
+								<option value="" selected disabled>Choose</option>
+								<option value="windows">Windows</option>
+								<option value="mac">Mac</option>
+								<option value="linux">Linux</option>
+								<option value="other">Other</option>
+							</select> <br /> <br />
+
+							<div id="os-other" class="hidden">
+
+								<label>Enter the operating system name</label> <br />
+								<input type="text" name="os-other" class="required" /> <br /> <br />
+
+							</div>
+
+							<label>What type of problem are you having?</label> <br />
+							<select id="issue" name="issue" class="required" >
+								<option value="" selected disabled>Choose</option>
+								<option value="startup">Startup</option>
+								<option value="internet">Internet</option>
+								<option value="peripherals">Peripherals (Keyboard, Mouse, etc)</option>
+								<option value="crash">Freeze/Crash</option>
+								<option value="speed">Speed</option>
+								<option value="graphics">Graphics</option>
+								<option value="couruption">Couruption</option>
+								<option value="other">Other</option>
+							</select> <br /> <br />
+
+							<div id="issue-other" class="hidden">
+
+								<label>Briefly describe your issue</label> <br />
+								<input type="text" name="issue-other" class="required" /> <br /> <br />
+
+							</div>
+
+							<label>What relevant software/hardware are you are using?</label> <br />
+							<input type="text" name="issue-relevant" class="required" /> <br /> <br />
+
+						</div>
+
+						<div id="phone">
+						</div>
+
+						<div id="printer">
+						</div>
+					</fieldset>
+				</div>
+				<div id="internet" class="hidden"> <br />
+					<fieldset>
+						<legend>Internet</legend>
+
+						<label>How do you access the internet?</label> <br />
+						<select id="internet-method" name="internet-method" class="required" >
+							<option value="" selected disabled>Choose</option>
+							<option value="ethernet">Ethernet</option>
+							<option value="wifi">WiFi</option>
+							<option value="other">Other</option>
+						</select> <br /> <br />
+
+						<div id="internet-method-other" class="hidden">
+
+							<label>Briefly describe your way of accessing the internet</label> <br />
+							<input type="text" name="internet-method-other" class="required" /> <br /> <br />
+
+						</div>
+
+						<label>Which of these best describes your issue?</label> <br />
+						<select id="internet-issue-specific" name="internet-issue-specific" class="required" >
+							<option value="" selected disabled>Choose</option>
+							<option value="no-internet">No Connection</option>
+							<option value="slow">Slow Internet</option>
+							<option value="partial">Only some websites load</option>
+							<option value="other">Other</option>
+						</select> <br /> <br />
+
+						<div id="internet-issue-specific-other-reveal" class="hidden">
+
+							<label>Briefly describe the problem you are having</label> <br />
+							<input type="text" name="internet-issue-specific-other" class="required" /> <br /> <br />
+
+						</div>
+
+						<label>When did this first become a problem?</label> <br />
+						<input type="text" name="internet-issue-started" placeholder='For example "When I changed my internet plan"' /><br /> <br />
+
+						<div id="internet-speed" class="hidden">
+
+							<label>What is your current internet speed in MB/s? Use <a href="https://www.speedtest.net" target="_blank">Speedtest.net</a> to test</label><br />
+							<input min="0" step="0.01" type="number" placeholder="Current Speed in MB/s" name="current-internet-speed" id="current-internet-speed" class="required" /><br /> <br />
+
+							<label>What speed do you expect/pay for in MB/s?</label><br />
+							<input min="0" step="0.01" type="number" placeholder="Expected Speed in MB/s" name="expected-internet-speed" id="expected-internet-speed" class="required"  /><br /> <br />
+						</div>
+
+						<div id="partial-internet" class="hidden">
+
+							<label>Choose a site you are unable to access and use <a href="https://isthissitedown.net" target="_blank">isthissitedown.net</a> to check if it is down</label><br />
+							<select id="isthissitedown-test" name="isthissitedown-test" class="required" >
+								<option value="" selected disabled>Choose</option>
+								<option value="down">The site is down</option>
+								<option value="up">The site is online</option>
+							</select><br /><br />
+
+							<div id="partial-internet-incognito-test" class="hidden">
+
+								<label>Can you access the site using incognito mode or a different browser?</label>
+								<select id="incognito-test" name="incognito-test" class="required" >
+									<option value="" selected disabled>Choose</option>
+									<option value="yes">Yes</option>
+									<option value="no">No</option>
+								</select><br /><br />
+
+							</div>
+						</div>
+
+						<div id="internet-connection" class="hidden">
+
+							<label>What information do visitors need to connect to your network?</label> <br />
+							<select id="internet-security" name="internet-security" class="required" >
+								<option value="" selected disabled>Choose</option>
+								<option value="nothing">Nothing</option>
+								<option value="password">Password</option>
+								<option value="user">Username and Password</option>
+								<option value="certificate">Certificate</option>
+								<option value="other">Other</option>
+							</select> <br /> <br />
+
+							<div id="internet-connection-security-other" class="hidden">
+
+								<label>Briefly explain what is used to gain access</label> <br />
+								<input type="text" name="internet-security-other" class="required" /> <br /> <br />
+
+							</div>
+
+							<label>Can you browse the internet on a different network? Try a mobile hotspot</label><br />
+							<select id="hotspot-test" name="hotspot-test" class="required" >
+								<option value="" selected disabled>Choose</option>
+								<option value="yes">Yes</option>
+								<option value="no">No</option>
+							</select><br /><br />
+
+						</div>
+
+						<div id="internet-router-check" class="hidden">
+							<label>Do you have access to your router?</label><br />
+							<select id="router-check" name="router-check" class="required" >
+								<option value="" selected disabled>Choose</option>
+								<option value="yes">Yes</option>
+								<option value="no">No</option>
+							</select><br /><br />
+						</div>
+
+					</fieldset>
+				</div>
+				<div id="solutions" class="hidden"> <br />
+					<fieldset>
+						<legend>Potential Solutions</legend>
+
+						<label>We have some potential fixes for you. Try these from top to bottom and tick any that solve the issue.</label><br /><br />
+
+						<div class="partial-internet-other-site-solution hidden">
+
+							<input type="checkbox" name="potential-solutions" value="partial-internet-other-site" id="partial-internet-other-site">
+							<label>View a different website - the one you are trying to access is currently unavalable</label>
+						</div>
+
+						<div class="partial-internet-cache-solution hidden">
+
+							<input type="checkbox" name="potential-solutions" value="partial-internet-cache" id="partial-internet-cache">
+							<label>Follow the instructions to <a href="https://www.refreshyourcache.com/en/home/" target="_blank">refresh your cache</a> and try to visit the site again</label>
+						</div>
+					
+						<div class="internet-speed-solutions hidden">
+
+							<input type="checkbox" name="potential-solutions" value="internet-speed-server" id="internet-speed-server">
+							<label>Use a different <a href="https://www.speedtest.net">Speedtest</a> server to test your internet speed <Br /></label>
+
+						</div>
+
+						<div class="internet-solutions-restart-internal hidden">
+
+							<input type="checkbox" name="potential-solutions" value="internet-speed-restart-internal" id="internet-speed-restart-internal">
+							<label>Restart the network setting on your device <br /></label>
+						</div>
+						<div class="internet-solutions-restart-router hidden">
+							<input type="checkbox" name="potential-solutions" value="internet-speed-restart-router" id="internet-speed-restart-router">
+							<label>Restart your router<br /></label>
+
+						</div>
+
+						<div class="internet-solutions-new-ethernet hidden">
+
+							<input type="checkbox" name="potential-solutions" value="internet-connection-new-ethernet" id="internet-connection-new-ethernet">
+							<label>Replace your ethernet cable</label>
+						</div>
+
+						<div class="internet-speed-solutions hidden">
+
+							<input type="checkbox" name="potential-solutions" value="internet-speed-new-router" id="internet-speed-new-router">
+							<label>Use a different router with the same network cable <Br /></label>
+
+						</div>
+					</fieldset>
+				</div>
+			</form>
+		</div>
+	</body>
+</html>
