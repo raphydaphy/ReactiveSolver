@@ -69,9 +69,92 @@ function update()
 		$(".issue-types").show();
 	}
 
-    if (issue === "internet")
+	if (issue === "crash")
+	{
+		$(".crash").show();
+
+		var crashIssueSpecific = $("#crash-issue-specific-generic").val();
+
+		if (deviceType === "pc" && deviceTypeSpecific === "windows")
+		{
+			$(".crash-issues-windows-pc").show();
+			crashIssueSpecific = $("#crash-issue-specific-windows-pc").val();
+
+		}
+		else
+		{
+			$(".crash-issues-generic").show();
+		}
+
+		/*
+		shutdown
+		bsod
+		program-crash
+		major-freeze
+		program-freeze
+		*/
+
+		var crashFrequencyCheck = $("#crash-frequency-check").val();
+		var continueToUnsavedCheck = (crashIssueSpecific ==="shutdown" || crashIssueSpecific === "program-crash" || crashIssueSpecific === "major-freeze" || crashIssueSpecific === "program-freeze");
+
+		if (crashIssueSpecific === "bsod")
+		{
+			$(".bsod-doing-check").show();
+			var bsodDoingCheck = $("#bsod-doing-check").val();
+
+			if (bsodDoingCheck === "normal")
+			{
+				continueToUnsavedCheck = true;
+				if (crashFrequencyCheck === "once" || crashFrequencyCheck === "rare")
+				{
+					$("#solutions").show();
+					$(".bsod-wait-solution").show();
+				}
+			}
+			else if (bsodDoingCheck === "update")
+			{
+
+			}
+			else if (bsodDoingCheck === "other")
+			{
+				$(".bsod-doing-check-other").show();
+			}
+		}
+
+		if (continueToUnsavedCheck)
+		{
+			$(".crash-issue-unsaved-check").show();
+			var crashIssueUnsavedCheck = $("#crash-issue-unsaved-check").val();
+			if (crashIssueUnsavedCheck === "critical")
+			{
+
+			}
+			else if (crashIssueUnsavedCheck === "no" || crashIssueUnsavedCheck === "yes")
+			{
+				if (crashFrequencyCheck === "once" || crashFrequencyCheck === "rare")
+				{
+					if (crashIssueSpecific === "program-freeze")
+					{
+						if (deviceType === "pc")
+						{
+							$("#solutions").show();
+							if (deviceTypeSpecific !== "other")
+							{
+								$(".program-crash-force-solution-" + deviceTypeSpecific).show();
+							}
+						}
+					}
+				}
+			}
+		}
+		if (crashIssueSpecific === "other")
+		{
+			$(".crash-issue-specific-other").show();
+		}
+	}
+    else if (issue === "internet")
     {
-    	$("#internet").show();
+    	$(".internet").show();
 
     	var internetMethod = $("#generic-internet-method").val();
     	var internetIssueSpecific = $("#internet-issue-specific-generic").val();
@@ -98,6 +181,7 @@ function update()
    		}
 
    		var internetConnectionIssue = internetIssueSpecific === "no-internet";
+   		var internetRestartIssue = false;
 
    		if (internetIssueSpecific === "slow")
    		{
@@ -105,9 +189,9 @@ function update()
 
    			if ($("#current-internet-speed").val() > 0 && $("#expected-internet-speed").val() > 0)
    			{
+   				internetRestartIssue = true;
    				$("#solutions").show();
    				$(".internet-speed-solutions").show();
-   				$(".internet-solutions-restart-internal").show();
    			}
    		}
    		else if (internetIssueSpecific == "partial")
@@ -164,39 +248,43 @@ function update()
    					$(".internet-solutions-new-ethernet").show();
    				}
 
-   				$("#internet-other-device-check").show();
-
-   				var otherDeviceCheck = $("#other-device-check").val();
-
-   				if (otherDeviceCheck === "yes")
-   				{
-   					$("#solutions").show();
-   					$(".internet-solutions-restart-internal").show();
-   					$(".solutions-restart-major").show();
-
-   				}
-   				else if (otherDeviceCheck === "no")
-   				{
-					$("#internet-router-check").show();
-					var routerCheck = $("#router-check").val();
-
-					if (routerCheck === "yes")
-					{
-						$("#solutions").show();
-						$(".internet-solutions-restart-router").show();
-					}
-					else if (routerCheck === "no")
-					{
-						$("#solutions").show();
-						$(".internet-solutions-request-restart").show();
-					}
-				}
+   				internetRestartIssue = true;
    			}
    			else if (hotspotTest === "no")
    			{
 				$("#solutions").show();
    				$(".internet-solutions-restart-internal").show();
    			}
+   		}
+   		if (internetRestartIssue)
+   		{
+   			$("#internet-other-device-check").show();
+
+			var otherDeviceCheck = $("#other-device-check").val();
+
+   			if (otherDeviceCheck === "yes")
+   			{
+   				$("#solutions").show();
+   				$(".internet-solutions-restart-internal").show();
+   				$(".solutions-restart-major").show();
+
+   			}
+   			else if (otherDeviceCheck === "no")
+   			{
+				$("#internet-router-check").show();
+				var routerCheck = $("#router-check").val();
+
+				if (routerCheck === "yes")
+				{
+					$("#solutions").show();
+					$(".internet-solutions-restart-router").show();
+				}
+				else if (routerCheck === "no")
+				{
+					$("#solutions").show();
+					$(".internet-solutions-request-restart").show();
+				}
+			}
    		}
     }
     else if (issue === "other")

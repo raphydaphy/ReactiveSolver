@@ -145,7 +145,77 @@ For a school project (Digital Media VET)
 						</div>
 					</fieldset>
 				</div>
-				<div id="internet" class="hidden"> <br />
+				<div class="crash hidden"> <br />
+					<fieldset>
+						<legend>Freeze/Crash</legend>
+
+						<label>Which of these best describes your issue?</label><br />
+						<div class="crash-issues-windows-pc hidden">
+							<select id="crash-issue-specific-windows-pc" name="crash-issue-specific-windows-pc" class="required" >
+								<option value="" selected disabled>Choose</option>
+								<option value="shutdown">Sudden shutdown</option>
+								<option value="bsod">Screen turned blue with error text</option>
+								<option value="program-crash">A program suddenly closed</option>
+								<option value="major-freeze">Entire device became unresponsive and froze</option>
+								<option value="program-freeze">A program froze and isn't responding</option>
+								<option value="other">Other</option>
+							</select> 
+						</div>
+						<div class="crash-issues-generic hidden">
+							<select id="crash-issue-specific-generic" name="crash-issue-specific-generic" class="required" >
+								<option value="" selected disabled>Choose</option>
+								<option value="shutdown">Sudden shutdown</option>
+								<option value="program-crash">A program suddenly closed</option>
+								<option value="major-freeze">Entire device became unresponsive and froze</option>
+								<option value="program-freeze">A program froze and isn't responding</option>
+								<option value="other">Other</option>
+							</select> 
+						</div>
+						<br />
+						<div class="crash-issue-specific-other hidden">
+
+							<label>Briefly describe the problem you are having</label> <br />
+							<input type="text" name="crash-issue-specific-other" class="required" /> <br /> <br />
+
+						</div>
+
+						<label>How often does this happen?</label><br />
+						<select id="crash-frequency-check" name="crash-frequency-check" class="required" >
+							<option value="" selected disabled>Choose</option>
+							<option value="once">This is the first time</option>
+							<option value="rare">It's happened before, but it's uncommon</option>
+							<option value="often">It happens frequently</option>
+						</select> <br /> <br />
+
+						<div class="bsod-doing-check hidden">
+							<label>What were you doing when the crash occured?</label><br />
+							<select id="bsod-doing-check" name="bsod-doing-check" class="required" >
+								<option value="" selected disabled>Choose</option>
+								<option value="normal">Using my device normally</option>
+								<option value="update">Installing Windows updates</option>
+								<option value="other">Other</option>
+							</select> <br /> <br />
+						</div>
+
+						<div class="bsod-doing-check-other hidden">
+
+							<label>Briefly describe what you were doing before the crash</label> <br />
+							<input type="text" name="bsod-doing-check-other" class="required" /> <br /> <br />
+
+						</div>
+
+						<div class="crash-issue-unsaved-check hidden">
+							<label>Did you have any unsaved work?</label><br />
+							<select id="crash-issue-unsaved-check" name="crash-issue-unsaved-check" class="required" >
+								<option value="" selected disabled>Choose</option>
+								<option value="critical">Yes, and I need to recover it</option>
+								<option value="yes">Yes, but it's alright if it's lost</option>
+								<option value="no">No</option>
+							</select> <br /> <br />
+						</div>
+					</fieldset>
+				</div>
+				<div class="internet hidden"> <br />
 					<fieldset>
 						<legend>Internet</legend>
 
@@ -265,7 +335,7 @@ For a school project (Digital Media VET)
 						</div>
 
 						<div id="internet-other-device-check" class="hidden">
-							<label>Can you access the internet on a different device using the same network?</label><br />
+							<label>Do you have the same issue when using a different device on the same network?</label><br />
 							<select id="other-device-check" name="other-device-check" class="required" >
 								<option value="" selected disabled>Choose</option>
 								<option value="yes">Yes</option>
@@ -290,6 +360,11 @@ For a school project (Digital Media VET)
 
 						<label>We have some potential fixes for you. Try these from top to bottom and tick any that solve the issue.</label><br /><br />
 
+						<!--
+							Solutions are ordered from the easiest to try down to the most difficult, expensive or time consuming
+							This ensures that easy fixes are tested before users go to extra effort to do something unneccesary
+						-->
+
 						<div class="partial-internet-other-site-solution hidden">
 
 							<input type="checkbox" name="potential-solutions" value="partial-internet-other-site" id="partial-internet-other-site">
@@ -313,6 +388,33 @@ For a school project (Digital Media VET)
 
 							<input type="checkbox" name="potential-solutions" value="internet-speed-restart-internal" id="internet-speed-restart-internal">
 							<label>Restart the network setting on your device <br /></label>
+
+						</div>
+
+						<div class="bsod-wait-solution hidden">
+							<input type="checkbox" name="potential-solutions" value="bsod-wait-solution" id="bsod-wait-solution">
+							<label>Wait for your PC to automatically restart, then continue using it normally<br /></label>
+						</div>
+
+						<div class="program-crash-force-solution-windows hidden">
+
+							<input type="checkbox" name="potential-solutions" value="program-crash-force-solution-windows" id="program-crash-force-solution-windows">
+							<label><a href="https://www.isumsoft.com/windows-10/how-to-force-quit-unresponsive-program-in-windows-10.html" target="_blank">Force quit</a> the program and reopen it later when needed<br /></label>
+
+						</div>
+
+						<div class="program-crash-force-solution-mac hidden">
+
+							<input type="checkbox" name="potential-solutions" value="program-crash-force-solution-mac" id="program-crash-force-solution-mac">
+							<label><a href="https://support.apple.com/en-au/HT201276" target="_blank">Force quit</a> the program and reopen it later when needed<br /></label>
+
+						</div>
+
+						<div class="program-crash-force-solution-linux hidden">
+
+							<input type="checkbox" name="potential-solutions" value="program-crash-force-solution-linux" id="program-crash-force-solution-linux">
+							<label><a href="https://www.howtogeek.com/211153/how-to-kill-a-desktop-application-or-background-process-on-linux/" target="_blank">Force quit</a> the program and reopen it later when needed<br /></label>
+
 						</div>
 
 						<div class="solutions-restart-major hidden">
@@ -323,8 +425,12 @@ For a school project (Digital Media VET)
 						</div>
 
 						<div class="internet-solutions-restart-router hidden">
+
 							<input type="checkbox" name="potential-solutions" value="internet-speed-restart-router" id="internet-speed-restart-router">
 							<label>Restart your router<br /></label>
+
+							<input type="checkbox" name="potential-solutions" value="internet-speed-new-router" id="internet-speed-new-router">
+							<label>Use a different router with the same network cable <Br /></label>
 
 						</div>
 
@@ -338,13 +444,6 @@ For a school project (Digital Media VET)
 
 							<input type="checkbox" name="potential-solutions" value="internet-connection-new-ethernet" id="internet-connection-new-ethernet">
 							<label>Replace your ethernet cable<br /></label>
-						</div>
-
-						<div class="internet-speed-solutions hidden">
-
-							<input type="checkbox" name="potential-solutions" value="internet-speed-new-router" id="internet-speed-new-router">
-							<label>Use a different router with the same network cable <Br /></label>
-
 						</div>
 					</fieldset>
 				</div>
